@@ -38,6 +38,6 @@ class FunctionModel extends Model
      */
     public function accessLevels()
     {
-        return $this->belongsToMany(AccessLevel::class, 'access_functions', 'function_id', 'access_id');
+        return $this->belongsToMany(AccessLevel::class, 'access_functions', 'function_id', 'access_level_id');
     }
 }

@@ -40,7 +40,7 @@ class AccessLevel extends Model
      */
     public function functions()
     {
-        return $this->belongsToMany(FunctionModel::class, 'access_functions', 'access_id', 'function_id');
+        return $this->belongsToMany(FunctionModel::class, 'access_functions', 'access_level_id', 'function_id');
     }
 
     /**
