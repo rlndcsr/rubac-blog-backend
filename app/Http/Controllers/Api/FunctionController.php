@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\FunctionModel;
+use App\Http\Requests\FunctionRequest;
 
 use App\Http\Controllers\Controller;
 
@@ -25,9 +26,14 @@ class FunctionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FunctionRequest $request)
     {
-        //
+        $functions = FunctionModel::create($request->validated());
+
+        return response()->json([
+            'message' => 'Function created successfully',
+            'data' => $functions,
+        ], 201);
     }
 
     /**
@@ -46,9 +52,18 @@ class FunctionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FunctionRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $functions = FunctionModel::findOrFail($id);
+
+        $functions->update($validated);
+
+        return response()->json([
+            'message' => 'Function updated successfully',
+            'data' => $functions,
+        ]);
     }
 
     /**

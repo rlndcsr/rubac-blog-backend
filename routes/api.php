@@ -20,4 +20,7 @@ Route::put('/access-levels/{id}', [AccessLevelController::class, 'update']);
 
 Route::get('/functions', [FunctionController::class, 'index']);
 Route::get('/functions/{id}', [FunctionController::class, 'show']);
+Route::post('/functions', [FunctionController::class, 'store']);
+Route::put('/functions/{id}', [FunctionController::class, 'update']);
 Route::delete('/functions/{id}', [FunctionController::class, 'destroy']);
+
