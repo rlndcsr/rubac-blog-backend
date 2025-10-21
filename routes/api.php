@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FunctionController;
 use App\Http\Controllers\Api\AccessLevelController;
+use App\Http\Controllers\Api\AccessFunctionController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -24,3 +25,6 @@ Route::post('/functions', [FunctionController::class, 'store']);
 Route::put('/functions/{id}', [FunctionController::class, 'update']);
 Route::delete('/functions/{id}', [FunctionController::class, 'destroy']);
 
+Route::get('/access-functions', [AccessFunctionController::class, 'index']);
+Route::get('/access-functions/{id}', [AccessFunctionController::class, 'show']);
+Route::delete('/access-functions/{id}', [AccessFunctionController::class, 'destroy']);
