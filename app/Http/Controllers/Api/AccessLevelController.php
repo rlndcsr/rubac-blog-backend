@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\AccessLevel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AccessLevelRequest;
 
 class AccessLevelController extends Controller
 {
@@ -39,9 +40,15 @@ class AccessLevelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AccessLevelRequest $request)
     {
-        //
+        $accessLevel = AccessLevel::create($request->validated());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Access level created successfully',
+            'data' => $accessLevel,
+        ]);
     }
 
     /**

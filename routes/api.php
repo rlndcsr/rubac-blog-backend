@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/access-levels', [AccessLevelController::class, 'index']);
 Route::get('/access-levels-with-functions', [AccessLevelController::class, 'indexWithFunctions']);
+Route::post('/access-levels', [AccessLevelController::class, 'store']);
