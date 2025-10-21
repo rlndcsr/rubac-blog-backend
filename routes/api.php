@@ -12,3 +12,5 @@ Route::get('/access-levels', [AccessLevelController::class, 'index']);
 Route::get('/access-levels-with-functions', [AccessLevelController::class, 'indexWithFunctions']);
 Route::post('/access-levels', [AccessLevelController::class, 'store']);
 Route::get('/access-levels/{id}', [AccessLevelController::class, 'show']);
+Route::delete('/access-levels/{id}', [AccessLevelController::class, 'destroy']);
+Route::put('/access-levels/{id}', [AccessLevelController::class, 'update']);

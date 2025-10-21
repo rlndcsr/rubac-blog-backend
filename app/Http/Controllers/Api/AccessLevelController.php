@@ -68,9 +68,19 @@ class AccessLevelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AccessLevelRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $accessLevel = AccessLevel::findOrFail($id);
+
+        $accessLevel->update($validated);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Access level updated successfully',
+            'data' => $accessLevel,
+        ]);
     }
 
     /**
@@ -78,6 +88,13 @@ class AccessLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $accessLevel = AccessLevel::findOrFail($id);
+
+        $accessLevel->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Access level deleted successfully',
+        ]);
     }
 }
