@@ -56,7 +56,13 @@ class AccessLevelController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $accessLevel = AccessLevel::findOrFail($id);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Access level retrieved successfully',
+            'data' => $accessLevel,
+        ]);
     }
 
     /**
